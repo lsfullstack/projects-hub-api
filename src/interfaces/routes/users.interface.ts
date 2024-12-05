@@ -9,3 +9,7 @@ export interface CreateUserServiceRequest {
 export interface CreateUserServiceResponse {
   user: User
 }
+
+export interface FindUserServiceResponse {
+  user: Partial<User>
+}

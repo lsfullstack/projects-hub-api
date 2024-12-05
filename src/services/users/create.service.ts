@@ -7,7 +7,7 @@ import {
 import { hash } from 'bcrypt'
 
 export class CreateUserService {
-  constructor(private usersRepository: UsersRepository) { }
+  constructor(private usersRepository: UsersRepository) {}
 
   async execute({
     name,
