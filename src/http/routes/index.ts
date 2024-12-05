@@ -1,6 +1,8 @@
 import { FastifyInstance } from 'fastify'
-import { createUserController } from '../controllers/users'
+import { createUserController, findUserController } from '../controllers/users'
 import { authLoginController } from '../controllers/auth'
+import { verifyJwt } from '@/middlewares/verify-jwt'
+import { verifyIsAdmin } from '@/middlewares/verify-is-admin'
 
 export const routes = async (app: FastifyInstance) => {
   app.get('/', async (_, reply) => {
@@ -11,6 +13,11 @@ export const routes = async (app: FastifyInstance) => {
   app.register(
     async (userRoutes) => {
       userRoutes.post('/', createUserController)
+      userRoutes.get(
+        '/:id',
+        { onRequest: [verifyJwt, verifyIsAdmin] },
+        findUserController,
+      )
     },
     { prefix: 'users' },
   )

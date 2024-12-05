@@ -4,7 +4,7 @@ import { AuthLoginServiceRequest } from '@/interfaces/routes/auth-route.interfac
 import { compare } from 'bcrypt'
 
 export class AuthLoginService {
-  constructor(private usersRepository: UsersRepository) { }
+  constructor(private usersRepository: UsersRepository) {}
 
   async execute({ email, password }: AuthLoginServiceRequest) {
     const user = await this.usersRepository.findByEmail(email)
