@@ -17,7 +17,7 @@
     "test:ui": "vitest --ui"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seeders/seed.ts"
   },
   "repository": {
     "type": "git",
